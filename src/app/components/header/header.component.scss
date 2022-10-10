@@ -1,0 +1,26 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 95%;
+    padding: 0 2%;
+    margin: auto;
+    p,h2 {
+        margin: 0;
+    }
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-wrapper {
+ display: grid;
+}
+
+.subtitle-wrapper {
+    display: flex;
+}
