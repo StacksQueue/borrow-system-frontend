@@ -1,17 +1,20 @@
-<div class="page-container">
+<!-- <div class="page-container">
+  <div class="search-filter-wrapper">
+    <mat-form-field>
+      <mat-label>Favorite food</mat-label>
+      <mat-select placeholder="nice">
+        <mat-option *ngFor="let filter of [1, 2, 3]" [value]="filter">
+          {{ filter }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
   <div class="item-list">
-    <div class="search-filter-wrapper">
-      <mat-form-field>
-        <mat-label>Favorite food</mat-label>
-        <mat-select placeholder="nice">
-          <mat-option *ngFor="let filter of [1, 2, 3]" [value]="filter">
-            {{ filter }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
     <div class="item-list-wrapper">
-      <app-item-card *ngFor="let item of [1, 2, 3, 4, 5, 6]" (addItemEvent)="onAddItem($event)"></app-item-card>
+      <app-item-card
+        *ngFor="let item of [1, 2, 3, 4, 5, 6]"
+        (addItemEvent)="onAddItem($event)"
+      ></app-item-card>
     </div>
   </div>
   <div class="checkout">
@@ -22,13 +25,24 @@
       <div class="width-10"></div>
     </mat-card>
     <div class="item-wrapper">
-      <app-borrowed-item-card
-        *ngFor="let item of selected"
-      ></app-borrowed-item-card>
+      <app-borrowed-item-card *ngFor="let item of selected">
+      </app-borrowed-item-card>
     </div>
     <div class="checkout">
-      <button  mat-raised-button class="btn-add" color="primary" (click)="requestItems()">request items</button>
-
+      <button
+        mat-raised-button
+        class="btn-add"
+        color="primary"
+        (click)="requestItems()"
+      >
+        request items
+      </button>
     </div>
+  </div>
+</div> -->
+
+<div class="page-container">
+  <div class="view-cart-container">
+    <mat-icon class="clickable" (click)="drawer()">shopping_cart</mat-icon>
   </div>
 </div>

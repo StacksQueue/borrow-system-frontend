@@ -1,0 +1,20 @@
+mat-drawer-container {
+  height: calc(100vh - 75px);
+}
+mat-drawer {
+  width: 30vw;
+}
+
+.sec-container {
+  max-width: 100%;
+  width: 90%;
+  padding: 0 5%;
+  margin: auto;
+}
+
+.borrowed-item-container {
+  padding: 20px 10px;
+  display: grid;
+  row-gap: 10px;
+  align-content: start;
+}

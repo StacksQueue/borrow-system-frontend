@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 @NgModule({
   declarations: [],
   imports: [CommonModule],
@@ -17,7 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatSelectModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule
   ],
 })
 export class MaterialModule {}

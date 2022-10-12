@@ -1,4 +1,15 @@
+<!---->
 <app-header></app-header>
-<router-outlet></router-outlet>
-
-
+<div class="sec-container">
+  <mat-drawer-container>
+    <mat-drawer-content>
+      <router-outlet (drawerEvent)="drawerEvent()"></router-outlet>
+    </mat-drawer-content>
+    <mat-drawer mode="side" [opened]="opened"  position="end">
+      <div class="borrowed-item-container">
+        <app-borrowed-item-card *ngFor="let item of [1, 2, 3, 4]">
+        </app-borrowed-item-card>
+      </div>
+    </mat-drawer>
+  </mat-drawer-container>
+</div>
