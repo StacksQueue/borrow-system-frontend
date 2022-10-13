@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, Subject, throwError } from 'rxjs';
 import * as Globals from '../globals';
 
 @Injectable({
@@ -9,9 +9,12 @@ import * as Globals from '../globals';
 export class BorrowService {
   constructor(private https: HttpClient) {}
 
+  cartSubject = new Subject();
+  equipmentSubject = new Subject();
+
   getEquipments() {
     return this.https
-      .get(Globals.SERVER_URL, {})
+      .get(`${Globals.SERVER_URL}/api/equipment`, {})
       .pipe(catchError(this.handleError));
   }
 
@@ -22,8 +25,16 @@ export class BorrowService {
       borrower: 'ako',
     };
     return this.https
-      .post(`${Globals.SERVER_URL}/api/borroweditems`,  temp)
+      .post(`${Globals.SERVER_URL}/api/borroweditems`, temp)
       .pipe(catchError(this.handleError));
+  }
+
+  onCartClick(): Observable<any> {
+    return this.cartSubject.asObservable();
+  }
+
+  onAddEquipment(): Observable<any> {
+    return this.equipmentSubject.asObservable();
   }
 
   handleError(err: HttpErrorResponse) {

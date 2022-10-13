@@ -1,4 +1,4 @@
-<!-- <div class="page-container">
+<div class="page-container">
   <div class="search-filter-wrapper">
     <mat-form-field>
       <mat-label>Favorite food</mat-label>
@@ -9,40 +9,17 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div class="item-list">
-    <div class="item-list-wrapper">
-      <app-item-card
-        *ngFor="let item of [1, 2, 3, 4, 5, 6]"
-        (addItemEvent)="onAddItem($event)"
-      ></app-item-card>
-    </div>
+  <div class="item-list-wrapper">
+    <app-item-card *ngFor="let equipment of equipmentlist" [equipment]="equipment"></app-item-card>
   </div>
-  <div class="checkout">
-    <div class="header">list of items to borrow</div>
-    <mat-card class="column-name mat-elevation-z0">
-      <div class="width-20">QTY</div>
-      <div class="width-70">NAME</div>
-      <div class="width-10"></div>
-    </mat-card>
-    <div class="item-wrapper">
-      <app-borrowed-item-card *ngFor="let item of selected">
-      </app-borrowed-item-card>
-    </div>
-    <div class="checkout">
-      <button
-        mat-raised-button
-        class="btn-add"
-        color="primary"
-        (click)="requestItems()"
-      >
-        request items
-      </button>
-    </div>
+  <div class="view-cart-container clickable">
+    <mat-icon (click)="cartClicked()">shopping_cart</mat-icon>
   </div>
-</div> -->
-
-<div class="page-container">
-  <div class="view-cart-container">
-    <mat-icon class="clickable" (click)="drawer()">shopping_cart</mat-icon>
-  </div>
+  <mat-paginator
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
 </div>

@@ -56,14 +56,29 @@
 mat-icon {
   color: #4f7836;
 }
+/* mat-card custom styles */
+
 .page-container {
   position: relative;
   min-height: calc(100vh - 100px);
 }
 
-.view-cart-container {
+.item-list-wrapper {
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 20px;
+}
+
+mat-paginator {
   position: absolute;
   bottom: 0;
+  width: 100%;
+}
+
+.view-cart-container {
+  position: absolute;
+  bottom: 60px;
   right: 5px;
   border-radius: 50%;
   height: 60px;

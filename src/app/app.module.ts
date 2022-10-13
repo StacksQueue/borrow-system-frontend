@@ -9,9 +9,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { BorrowComponent } from './components/borrow/borrow.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ItemCardComponent } from './components/borrow/item-card/item-card.component';
-import { BorrowedItemCardComponent } from './components/borrow/borrowed-item-card/borrowed-item-card.component';
+import { BorrowedItemCardComponent } from './components/borrowed-item/borrowed-item-card/borrowed-item-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BorrowedItemComponent } from './components/borrowed-item/borrowed-item.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     BorrowComponent,
     ProfileComponent,
     ItemCardComponent,
-    BorrowedItemCardComponent
+    BorrowedItemCardComponent,
+    BorrowedItemComponent
   ],
   imports: [
     BrowserModule,

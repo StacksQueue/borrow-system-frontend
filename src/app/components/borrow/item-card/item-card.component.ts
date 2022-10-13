@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BorrowService } from 'src/app/services/borrow.service';
 
 @Component({
   selector: 'app-item-card',
@@ -7,15 +8,15 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ItemCardComponent implements OnInit {
   @Output() addItemEvent = new EventEmitter();
+  @Input() equipment: any;
 
-  constructor() {}
+  constructor(private borrowService: BorrowService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.equipment);
+  }
 
-  addItem() {
-    this.addItemEvent.emit({
-      quantity: 1,
-      name: 'solda',
-    });
+  addEquipment() {
+    this.borrowService.equipmentSubject.next(this.equipment);
   }
 }

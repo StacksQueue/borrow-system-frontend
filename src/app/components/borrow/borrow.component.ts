@@ -8,19 +8,28 @@ import { BorrowService } from 'src/app/services/borrow.service';
   styleUrls: ['./borrow.component.scss'],
 })
 export class BorrowComponent implements OnInit {
-  @Output() drawerEvent = new EventEmitter();
-
   myControl = new FormControl('');
   options: string[] = ['HAHA', 'HEHE', 'huhu'];
   selected: any = [];
+  equipmentlist = [];
 
   constructor(private borrowServices: BorrowService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getEquipments();
+  }
 
   onAddItem(event: Event) {
     console.log('nice', event);
     this.selected.push(event);
+  }
+
+  getEquipments() {
+    this.borrowServices.getEquipments().subscribe((resp: any) => {
+      if (resp && resp.success) {
+        this.equipmentlist = resp.data;
+      }
+    });
   }
 
   requestItems() {
@@ -29,8 +38,7 @@ export class BorrowComponent implements OnInit {
     });
   }
 
-  drawer() {
-    console.log('hu')
-    this.drawerEvent.emit('');
+  cartClicked() {
+    this.borrowServices.cartSubject.next('');
   }
 }
