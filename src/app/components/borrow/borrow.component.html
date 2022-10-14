@@ -2,15 +2,46 @@
   <div class="search-filter-wrapper">
     <mat-form-field>
       <mat-label>Favorite food</mat-label>
-      <mat-select placeholder="nice">
+      <mat-select placeholder="nice" (selectionChange)="onSelectChange($event)">
         <mat-option *ngFor="let filter of [1, 2, 3]" [value]="filter">
           {{ filter }}
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field floatLabel="always">
+      <mat-label>search equipment</mat-label>
+      <input matInput placeholder="type here" />
+      <mat-icon matSuffix>search</mat-icon>
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+  </div>
+  <div class="class-sched-wrapper">
+    <div class="label-wrapper">
+      <mat-icon>qr_code</mat-icon>
+      <span>{{class_schedule.subjectcode}}</span>
+    </div>
+    <div class="label-wrapper">
+      <mat-icon>badge</mat-icon>
+      <span>{{class_schedule.name}}</span>
+    </div>
+    <div class="label-wrapper">
+      <mat-icon>schedule</mat-icon>
+      <span>{{class_schedule.schedule}}</span>
+    </div>
+    <div class="label-wrapper">
+      <mat-icon>location_on</mat-icon>
+      <span>{{class_schedule.room}}</span>
+    </div>
+    <div class="label-wrapper">
+      <mat-icon>person</mat-icon>
+      <span>Bar Foo</span>
+    </div>
   </div>
   <div class="item-list-wrapper">
-    <app-item-card *ngFor="let equipment of equipmentlist" [equipment]="equipment"></app-item-card>
+    <app-item-card
+      *ngFor="let equipment of equipmentlist"
+      [equipment]="equipment"
+    ></app-item-card>
   </div>
   <div class="view-cart-container clickable">
     <mat-icon (click)="cartClicked()">shopping_cart</mat-icon>
