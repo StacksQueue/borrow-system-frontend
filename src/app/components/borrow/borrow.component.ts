@@ -12,20 +12,34 @@ import { ClassSchedue } from 'src/app/models/ClassSchedule';
 export class BorrowComponent implements OnInit {
   selected: any = [];
   equipmentlist = [];
-  class_schedule: ClassSchedue = {
-    subjectcode: '',
-    name: '',
-    schedule: '',
-    room: '',
-    instructor: '',
-  };
+  class_schedlist: [ClassSchedue];
+  selected_sched = '';
+  class_schedule: ClassSchedue;
+  isSchedSelected: Boolean = false;
+  // class_schedule: ClassSchedue = {
+  //   subjectcode: '',
+  //   name: '',
+  //   schedule: '',
+  //   room: '',
+  //   instructor: {
+  //     _id: '',
+  //     name: '',
+  //   },
+  //   students: [
+  //     {
+  //       _id: '',
+  //       name: '',
+  //     },
+  //   ],
+  // };
   constructor(
     private borrowServices: BorrowService,
     private classSchedService: ClassSchedService
   ) {}
 
   ngOnInit(): void {
-    // this.getEquipments();
+    this.getClassScheduleList();
+    this.getEquipmentList();
   }
 
   getEquipmentList() {
@@ -36,7 +50,14 @@ export class BorrowComponent implements OnInit {
     });
   }
 
-  getClassScheduleList() {}
+  getClassScheduleList() {
+    this.classSchedService.getClassScheduleList().subscribe((resp: any) => {
+      if (resp && resp.success) {
+        this.class_schedlist = resp.data;
+        console.log(this.class_schedlist);
+      }
+    });
+  }
 
   requestItems() {
     this.borrowServices.registerRequestedItems({}).subscribe((resp) => {
@@ -46,10 +67,14 @@ export class BorrowComponent implements OnInit {
 
   onSelectChange(event: MatSelectChange) {
     console.log(event.value);
+    this.selected_sched = event.value;
     this.classSchedService
-      .getClassScheduleById('6348f2fed5ee9409f7957263')
+      .getClassScheduleById(this.selected_sched)
       .subscribe((resp: any) => {
         this.class_schedule = resp.data;
+        setTimeout(() => {
+          this.isSchedSelected = true;
+        }, 100);
       });
   }
 

@@ -1,40 +1,45 @@
 <div class="page-container">
-  <div class="search-filter-wrapper">
-    <mat-form-field>
-      <mat-label>Favorite food</mat-label>
-      <mat-select placeholder="nice" (selectionChange)="onSelectChange($event)">
-        <mat-option *ngFor="let filter of [1, 2, 3]" [value]="filter">
-          {{ filter }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field floatLabel="always">
-      <mat-label>search equipment</mat-label>
-      <input matInput placeholder="type here" />
-      <mat-icon matSuffix>search</mat-icon>
-      <!-- <mat-hint>Hint</mat-hint> -->
-    </mat-form-field>
-  </div>
-  <div class="class-sched-wrapper">
-    <div class="label-wrapper">
-      <mat-icon>qr_code</mat-icon>
-      <span>{{class_schedule.subjectcode}}</span>
+  <div class="class-search-container">
+    <div *ngIf="isSchedSelected" class="class-sched-wrapper">
+      <div class="label-wrapper">
+        <mat-icon>qr_code</mat-icon>
+        <span>{{ class_schedule.subjectcode }}</span>
+      </div>
+      <div class="label-wrapper">
+        <mat-icon>badge</mat-icon>
+        <span>{{ class_schedule.name }}</span>
+      </div>
+      <div class="label-wrapper">
+        <mat-icon>schedule</mat-icon>
+        <span>{{ class_schedule.schedule }}</span>
+      </div>
+      <div class="label-wrapper">
+        <mat-icon>location_on</mat-icon>
+        <span>{{ class_schedule.room }}</span>
+      </div>
+      <div class="label-wrapper">
+        <mat-icon>person</mat-icon>
+        <span>{{ class_schedule.instructor.name }}</span>
+      </div>
     </div>
-    <div class="label-wrapper">
-      <mat-icon>badge</mat-icon>
-      <span>{{class_schedule.name}}</span>
-    </div>
-    <div class="label-wrapper">
-      <mat-icon>schedule</mat-icon>
-      <span>{{class_schedule.schedule}}</span>
-    </div>
-    <div class="label-wrapper">
-      <mat-icon>location_on</mat-icon>
-      <span>{{class_schedule.room}}</span>
-    </div>
-    <div class="label-wrapper">
-      <mat-icon>person</mat-icon>
-      <span>Bar Foo</span>
+    <div class="search-filter-wrapper">
+      <mat-form-field>
+        <mat-label>Subject</mat-label>
+        <mat-select
+          placeholder="select your subject"
+          (selectionChange)="onSelectChange($event)"
+        >
+          <mat-option *ngFor="let sched of class_schedlist" [value]="sched._id">
+            {{ sched.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field floatLabel="always">
+        <mat-label>search equipment</mat-label>
+        <input matInput placeholder="type here" />
+        <mat-icon matSuffix>search</mat-icon>
+        <!-- <mat-hint>Hint</mat-hint> -->
+      </mat-form-field>
     </div>
   </div>
   <div class="item-list-wrapper">
