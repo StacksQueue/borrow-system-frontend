@@ -29,6 +29,10 @@ mat-paginator {
   background: #ddead1;
 }
 
+.display-end {
+  justify-content: flex-end !important;
+}
+
 .search-filter-wrapper {
   display: flex;
   justify-content: flex-end;
@@ -38,11 +42,11 @@ mat-paginator {
   }
 }
 
+
+
 .class-sched-wrapper {
-  // display: flex;
-  // justify-content: space-between;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   min-width: 60%;
 }
 

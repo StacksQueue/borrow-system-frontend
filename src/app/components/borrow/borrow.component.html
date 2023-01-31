@@ -1,5 +1,5 @@
 <div class="page-container">
-  <div class="class-search-container">
+  <div class="class-search-container" [class.display-end]="!isSchedSelected">
     <div *ngIf="isSchedSelected" class="class-sched-wrapper">
       <div class="label-wrapper">
         <mat-icon>qr_code</mat-icon>
@@ -52,10 +52,10 @@
     <mat-icon (click)="cartClicked()">shopping_cart</mat-icon>
   </div>
   <mat-paginator
-    [length]="100"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page"
+    [length]="pagination.length"
+    [pageSize]="pagination.limit"
+    [pageSizeOptions]="pagination.pageSizeOption"
+    (page)="paginate($event)"
   >
   </mat-paginator>
 </div>
